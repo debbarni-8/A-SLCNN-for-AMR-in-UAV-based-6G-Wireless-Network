@@ -1,1 +1,1 @@
-# IEEE-AMC-9500
+# A-SLCNN-for-AMR-in-UAV-based-6G-Wireless-Network
