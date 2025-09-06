@@ -20,5 +20,5 @@ This repository contains all scripts required to reproduce the simulation and nu
 | Script | Related Figure(s) | Description |
 |--------|-------------------|-------------|
 | **Fig4_6_8_9_PROPOSED.ipynb** | Fig. 4, Fig. 6, Fig. 8, Fig. 9 | Fig. 4: Training process of the proposed model. Fig. 6: Performance comparison between the baseline and proposed models. Fig.8: Performance of the SLCNN model on 26 modulation schemes. Fig.9: Classification performance at different SNR levels. |
-| **flywheel.m** | Fig. 6 (a, b, c) | Calculates mass, moment of inertia, and stored kinetic energy for five flywheel design cases. Generates bar plots comparing steel and aluminum options. |
+| **Fig6_GRU.ipynb, Fig6_LSTM.ipynb, Fig6_CLDNN.ipynb, Fig6_ResNet.ipynb** | Fig. 6 | Performance comparison between the baseline and proposed models: (a) Accuracy, (b) Precision, (c) Recall, and (d) F1-score. |
 | **senales.m** | Fig. 9 (a, b, c, d) | Loads waveform data from *Graf-KERs.xlsx* and plots four time-domain signals: input current, inductor currents, output current, and output voltage. |
