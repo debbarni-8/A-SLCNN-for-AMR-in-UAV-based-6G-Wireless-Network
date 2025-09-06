@@ -26,11 +26,11 @@ This repository contains all scripts required to reproduce the simulation and nu
 | **Fig_7.ipynb** | Fig. 7 | Classification performance with varying simulation parameters: (a) Learning rate at dropout 0.45, (b) Dropout at learning rate 0.001. |
 
 # 📁 Dataset
-RML2016.10a.tar, RML2016.10b.tar, 2018.01.OSC.0001_1024x2M.h5.tar, HisarMod2019.1 datasets areavailable from DEEPSIG
+RML2016.10a.tar, RML2016.10b.tar, 2018.01.OSC.0001_1024x2M.h5.tar, HisarMod2019.1 datasets are available at <a href="https://www.deepsig.ai/">DEEPSIG</a> and HisarMod2019.1 is available at <a href="https://ieee-dataport.org/">IEEE DataPort</a>.
 
 # 💻 Required Files
-- Fig4_6_8_9_PROPOSED, Fig6_GRU.ipynb, Fig6_LSTM.ipynb, Fig6_CLDNN.ipynb, Fig6_ResNet.ipynb are the same folder.
-- Fig_5.ipynb, Fig_7.ipynb are are standalone.
+- Fig4_6_8_9_PROPOSED, Fig6_GRU.ipynb, Fig6_LSTM.ipynb, Fig6_CLDNN.ipynb, Fig6_ResNet.ipynb are in the same folder.
+- Fig_5.ipynb, Fig_7.ipynb are standalone.
 
 # 💻 Requirements
 - The training and testing procedures are executed using the Keras DL API, with TensorFlow as the computational backend and an Nvidia M60 GPU for acceleration.
