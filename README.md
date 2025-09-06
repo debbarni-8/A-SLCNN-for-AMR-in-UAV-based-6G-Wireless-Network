@@ -16,7 +16,7 @@ Satyendra Singh Yadav
 # 📁 Included Scripts
 
 This repository contains all scripts required to reproduce the simulation and numerical results presented in the article.
-**[Graf-KERs.xlsx](Graf-KERs.xlsx)** → Required for `senales.m`. Place it in the same folder as the script.
+
 
 | Script | Related Figure(s) | Description |
 |--------|-------------------|-------------|
