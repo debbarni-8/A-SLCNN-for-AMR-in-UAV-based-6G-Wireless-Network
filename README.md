@@ -26,7 +26,7 @@ This repository contains all scripts required to reproduce the simulation and nu
 | **Fig_7.ipynb** | Fig. 7 | Classification performance with varying simulation parameters: (a) Learning rate at dropout 0.45, (b) Dropout at learning rate 0.001. |
 
 # 📁 Dataset
-RML2016.10a.tar [Link Text](https://example.com)(https://www.deepsig.ai/datasets/)) (https://www.kaggle.com/datasets/nolasthitnotomorrow/radioml2016-deepsigcom), RML2016.10b.tar (https://www.kaggle.com/datasets/marwanabudeeb/rml201610b/code), 2018.01.OSC.0001_1024x2M.h5.tar (https://www.kaggle.com/datasets/pinxau1000/radioml2018), HisarMod2019.1 (https://pan.quark.cn/s/016a2f6861a2#/list/share) datasets areavailable from DEEPSIG
+RML2016.10a.tar [Link Text](https://www.deepsig.ai/datasets/) (https://www.kaggle.com/datasets/nolasthitnotomorrow/radioml2016-deepsigcom), RML2016.10b.tar (https://www.kaggle.com/datasets/marwanabudeeb/rml201610b/code), 2018.01.OSC.0001_1024x2M.h5.tar (https://www.kaggle.com/datasets/pinxau1000/radioml2018), HisarMod2019.1 (https://pan.quark.cn/s/016a2f6861a2#/list/share) datasets areavailable from DEEPSIG
 
 # 💻 Required Files
 - Fig4_6_8_9_PROPOSED, Fig6_GRU.ipynb, Fig6_LSTM.ipynb, Fig6_CLDNN.ipynb, Fig6_ResNet.ipynb are the same folder.
