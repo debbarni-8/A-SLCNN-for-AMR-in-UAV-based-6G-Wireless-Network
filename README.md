@@ -13,6 +13,9 @@ Vipin Pal
 
 Satyendra Singh Yadav
 
+
+<img width="573" height="444" alt="download (4)" src="https://github.com/user-attachments/assets/56565623-32f4-48e6-9fa3-4e9c47bfa0b1" />
+
 # 📁 Included Scripts
 
 This repository contains all scripts required to reproduce the simulation and numerical results presented in the article.
