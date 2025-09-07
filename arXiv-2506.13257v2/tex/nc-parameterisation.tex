@@ -1,0 +1,88 @@
+\section{Alternative Parameterisations of the QVP}\label{sec:alt-parameterisation}
+%
+A challenge within the multiple quantile estimation literature is the identification of quantile variation of coefficients. Viewed from the state-space representation in Equations~\ref{eq:observation-equation-centred}-\ref{eq:state-equation-centred}, selection of quantile variation can be seen as a variance selection problem. This entails boundary estimation which is computationally difficult and known to lead to slow convergence of $\mathrm{MCMC}$ samplers \citep{fruhwirth2010stochastic}, even with horseshoe priors \citep{bitto2019achieving}. For this reason, we formulate the state-space in its non-centred form in the spirit of \citet{fruhwirth2010stochastic}. This shifts the variance selection problem to a standard conjugate variable selection problem. To see this, re-write the State-equation \ref{eq:state-equation-centred} as:
+%
+\begin{equation}
+    \beta_{q,j} = \beta_{0,j} + \sigma_{q,j}\tilde{\beta}_{q,j},
+\end{equation}
+%
+%
+\begin{equation}
+    \tilde{\beta}_{q,j} = \tilde{\beta}_{q-1,j} + \tilde{\epsilon}_{q,j}, \quad \tilde{\epsilon}_{q,j} \sim \normal(0,1),
+\end{equation}
+%
+with initial condition $\tilde{\beta}_{0,j} = 0$. Using this transformation the Observation-equation \ref{eq:observation-equation-centred} can be equivalently written as:
+%
+\begin{equation} \label{eq:NC_model}
+ y_{t} = \alpha_q + x^{T}\beta_0 + x^{T}_t\text{diag}(\sigma_{q,1},\dotsc,\sigma_{q,K})\tilde{\beta}_q + \epsilon^y_{q,t}.   
+\end{equation}
+%
+Re-writing $x^{T}_t\text{diag}(\sigma_{q,1},\dotsc,\sigma_{q,K})\tilde{\beta}_q$ as $\tilde{x}_{q,t}^{T}\sigma_q$ where $\tilde{x}_{q,t} = \tilde{\beta}_q^{T}\text{diag}(x_t)$, the state standard deviations may be viewed simply as regression coefficients, motivating a shift of the domain of $\sigma_{q,j}$ from the positive only to the entire real line. %This introduces sign-unidentifiability which we address below. 
+Doing so avoids the boundary estimation issues and additionally results in conditionally conjugate posteriors, allowing for efficient Gibbs sampling.
+%
+For simplicity, we employ horseshoe priors with a normal kernel for $\beta_0$ and $\sigma_q$. 
+%
+The prior for $\beta_0$ remains the same as in Equation~\ref{eq:prior_level} and $(\sigma_1^T,\dotsc,\sigma_\mathcal{Q}^T)^T = \boldsymbol{\sigma}$ now takes the following form:
+%
+\begin{IEEEeqnarray}{rl}
+    \boldsymbol{\sigma} & \sim \mvn\left(0,\boldsymbol{\tilde{\Sigma}}\right) \\
+        \tilde{\nu}_q & \sim C_{+}\left(0,1/\sqrt{\mathcal{T}}\right), \quad q = 1,\dotsc,\mathcal{Q} \\
+        \tilde{\lambda}_{q,j} & \sim C_{+}\left(0,1\right), \quad q = 1,\dotsc,\mathcal{Q},\; j = 1,\dotsc,K
+\end{IEEEeqnarray}
+%
+where $\tilde{\Sigma}_q = \tilde{\nu}_q^2\mathrm{diag}({\tilde{\lambda}_{q,1}}^2,\dotsc,{\tilde{\lambda}_{q,K}}^2)$ and $\boldsymbol{\tilde{\Sigma}} = \mathrm{diag}(\tilde{\Sigma}_1,\dotsc,\tilde{\Sigma}_{\mathcal{Q}})$. It can be shown, that a normal prior on the scale, $\sigma_q$, implies a generalised inverse-Gaussian prior on the variance whose properties for state-space models are studied in \citet{cadonna2020triple}.\footnote{In fact, the horseshoe prior on the scale can be shown to be nested by the more general triple-gamma prior \citep{cadonna2020triple} framework} This results in a higher concentration rate of the marginal prior on $\sigma_{q,j}$ near the origin and lower rate of tail-decay, which is desirable for variable selection type inference tasks \citep{polson_half-cauchy_2012}. 
+%
+\subsection{MCMC Sampling algorithm for Non-Centred QVP}
+%
+In order to draw inference on the non-centred $\QVP$ model in Equation~\ref{eq:NC_model}, we can again make use of efficient updating via conditional posteriors: 
+%
+\begin{enumerate}
+    \item ${\boldsymbol{\beta}_0}^{(s)} \sim p(\boldsymbol{\beta}_0\mid \boldsymbol{y},\boldsymbol{\tilde{\beta}}^{(s-1)},\boldsymbol{\sigma}^{(s-1)},\boldsymbol{\tilde{\Sigma}}^{(s-1)},\Sigma_0^{(s-1)},\boldsymbol{\alpha}^{(s-1)},\boldsymbol{\mu}^{(s-1)},\boldsymbol{\Omega}{(s-1)} )$, 
+    \item $\Sigma^{(s)}_0 \sim p(\Sigma_0\mid \boldsymbol{y},\boldsymbol{\tilde{\beta}}^{(s-1)},\boldsymbol{\sigma}^{(s-1)},\boldsymbol{\tilde{\Sigma}}^{(s-1)},\boldsymbol{\beta}_0^{(s)},\boldsymbol{\alpha}^{(s-1)},\boldsymbol{\mu}^{(s-1)}, \boldsymbol{\Omega}{(s-1)})$, 
+    \item ${\boldsymbol{\tilde{\beta}}}^{(s)} \sim p({\boldsymbol{\tilde{\beta}}}\mid \boldsymbol{y},\boldsymbol{\sigma}^{(s-1)},\boldsymbol{\tilde{\Sigma}}^{(s-1)},\boldsymbol{{\beta}}_0^{(s)},\Sigma_0^{(s)},\boldsymbol{\alpha}^{(s-1)},\boldsymbol{\mu}^{(s-1)},\boldsymbol{\Omega}{(s-1)} )$, 
+    \item $\boldsymbol{\sigma}^{(s)} \sim p(\boldsymbol{\sigma} | \boldsymbol{y},\boldsymbol{\tilde{\beta}}^{(s)},\boldsymbol{\tilde{\Sigma}}^{(s-1)},\boldsymbol{{\beta}}_0^{(s)},\Sigma_0^{(s)},\boldsymbol{\alpha}^{(s-1)},\boldsymbol{\mu}^{(s-1)},\boldsymbol{\Omega}{(s-1)} )$, 
+    \item $\boldsymbol{\tilde{\Sigma}}^{(s)} \sim p(\boldsymbol{\tilde{\Sigma}}\mid \boldsymbol{y},\boldsymbol{\tilde{\beta}}^{(s)},\boldsymbol{\sigma}^{(s)},\boldsymbol{{\beta}}_0^{(s)},\Sigma_0^{(s)},\boldsymbol{\alpha}^{(s-1)},\boldsymbol{\mu}^{(s-1)}, \boldsymbol{\Omega}{(s-1)})$, 
+    \item $\boldsymbol{\alpha}^{(s)} \sim p(\boldsymbol{\alpha} \mid \boldsymbol{y},\boldsymbol{\tilde{\beta}}^{(s)},\boldsymbol{\sigma}^{(s)},\boldsymbol{\tilde{\Sigma}}^{(s)},\boldsymbol{{\beta}}_0^{(s)},\Sigma_0^{(s)},\boldsymbol{\mu}^{(s-1)},\boldsymbol{\Omega}{(s-1)} )$, 
+    \item $\boldsymbol{\mu}^{(s)} \sim p(\boldsymbol{\mu} \mid \boldsymbol{y},\boldsymbol{\tilde{\beta}}^{(s)},\boldsymbol{\sigma}^{(s)},\boldsymbol{\tilde{\Sigma}}^{(s)},\boldsymbol{{\beta}}_0^{(s)},\Sigma_0^{(s)},\boldsymbol{\alpha}^{(s),},\boldsymbol{\Omega}{(s-1)})$, 
+    \item $\boldsymbol{\Omega}{(s)} \sim p(\Omega\mid \boldsymbol{y},\boldsymbol{\tilde{\beta}}^{(s)},\boldsymbol{\sigma}^{(s)},\boldsymbol{\tilde{\Sigma}}^{(s)},\boldsymbol{{\beta}}_0^{(s)},\Sigma_0^{(s)},\boldsymbol{\alpha}^{(s)},\boldsymbol{\mu}^{(s)} )$,
+\end{enumerate}
+%
+for $s=(1,\dotsc,S)$ until convergence. Compared to the sampling steps in the centred QVP model, sampling individually the quantile invariant vector $\beta_0$ and associated hyper-parameters, adds two further sampling blocks: one for the $\boldsymbol{\sigma}$ and $\boldsymbol{\tilde{\Sigma}}$, and modified sampling steps for $\beta_0$, which we discuss in turn.
+%
+
+% Posteriors of \beta_0 and 
+%
+To update $\beta_0$, the relavant likelihood and prior contributions are proportional to:
+\begin{equation}
+    \prod_{q=1}^Q \mvn\left(\alpha_q + X\beta_0 + \tilde{X}_q\sigma_q + \mu_q,\Omega_q\right) \times \mvn\left(0,\Sigma_0\right),
+\end{equation}
+%
+where $\tilde{X}_q = X \odot \left(\mathbbm{1}_T\otimes \tilde{\beta}_q^T\right)$, and $\Omega_q = \text{diag}(\omega_q)$. Since conditional on $\beta_0$, all likelihood contributions across quantiles are exchangeable, the posterior of $\beta_0$ may be efficiently updated one quantile at a time.\footnote{This follows from basic probability theory in that $p(\theta|Y_1,Y_2)\propto p(Y_2|Y_1,\theta)\times p(\theta|Y_1)$} The conditional posterior for $\beta_0$ is thus normal:
+%
+\begin{equation}\label{eq:NC-beta0-posterior}
+    \beta_0|\boldsymbol{Y},\vartheta \propto \mvn\left(\overline{\beta}_0,K^{-1}_{\beta_0}\right),
+\end{equation}
+%
+where $K_{\beta_0} = (\sum_{q=1}^{\mathcal{Q}}X^T\boldsymbol{\Omega}^{-1}_qX) + \Sigma_0^{-1}$ and $\overline{\beta}_0  = K^{-1}_{\beta_0}(\sum_{q=1}^{\mathcal{Q}}X^T\Omega_q^{-1}(y - \alpha_q - \mu_q - \tilde{X}_q\sigma_q))$. See Appendix~\ref{app:qvp-posteriors} for further derivation of the posterior moments.
+%
+
+Due to the non-centred representation of the state-space, the prior for $\boldsymbol{\tilde{\beta}}$ simplifies to $\boldsymbol{\tilde{\beta}} \sim \mvn\left(0,\left(\boldsymbol{H}^T\boldsymbol{H}\right)^{-1}\right)$. Define $\boldsymbol{\check{X}} = \boldsymbol{X}\text{diag}(\boldsymbol{\sigma})$ and $\boldsymbol{\beta_0} = \mathbbm{1}_{\mathcal{Q}} \otimes \beta_0$, then the posterior for $\boldsymbol{\tilde{\beta}}$ is conditionally normal:
+%
+\begin{equation}
+    \boldsymbol{\tilde{\beta}} | \boldsymbol{Y},\vartheta \propto \mvn\left(\overline{\boldsymbol{\tilde{\beta}}},\tilde{K}_{\tilde{\beta}}^{-1}\right),
+\end{equation}
+%
+where $\tilde{K}_{\tilde{\beta}} = (\boldsymbol{\check{X}}^{T}\boldsymbol{\Omega}^{-1}\boldsymbol{\check{X}} + \boldsymbol{H}^T\boldsymbol{H})$ and $\boldsymbol{\tilde{\beta}} = \tilde{K}_{\tilde{\beta}}^{-1}(\boldsymbol{\check{X}}^{T}\boldsymbol{\Omega}^{-1}(\boldsymbol{Y}-\boldsymbol{\alpha} - \boldsymbol{\mu} - \boldsymbol{X}\boldsymbol{\beta}_0))$. This posterior retains its band-matrix structure as in Figure~\ref{fig:precision_Kbeta}, which makes for fast computation with any sparse matrix routine.
+%
+
+%
+To sample the state standard deviations $\boldsymbol{\sigma}$, we can rely again on standard regression results. Let $\boldsymbol{\tilde{X}}$ contain the stacked $\tilde{X}_q$ matrices across all quantiles, then the posterior for $\boldsymbol{\sigma}$ is normal:
+%
+\begin{equation}
+    \boldsymbol{\sigma}|\boldsymbol{Y},\vartheta \propto \mvn\left(\overline{\boldsymbol{\sigma}},K_{\boldsymbol{\sigma}}^{-1}\right),
+\end{equation}
+%
+where $K_{\boldsymbol{\sigma}} = (\boldsymbol{\tilde{X}}^{T}\boldsymbol{\Omega}^{-1}\boldsymbol{\tilde{X}} + \boldsymbol{\tilde{\Sigma}}^{-1})$ and $\overline{\boldsymbol{\sigma}} = K_{\boldsymbol{\sigma}}^{-1} (\boldsymbol{\tilde{X}}^{T}\boldsymbol{\Omega}^{-1}(\boldsymbol{Y} - \boldsymbol{\alpha} - \boldsymbol{\mu} - \boldsymbol{X}\boldsymbol{\beta}_0))$. 
+
+Shift of the domain of $\sigma_{q,j}$ to the entire real line has advantages for computation but it introduces sign-unidentifiability. To aid mixing,  we randomly permute the signs of $(\boldsymbol{\sigma},\boldsymbol{\tilde{\beta}})$ as proposed in \citet{bitto2019achieving}.% are randomly permuted \citep{bitto2019achieving}.
+%
