@@ -13,8 +13,11 @@ Vipin Pal
 
 Satyendra Singh Yadav
 
+# 
 
-<img width="573" height="444" alt="download (4)" src="https://github.com/user-attachments/assets/56565623-32f4-48e6-9fa3-4e9c47bfa0b1" />
+Design a lighted a DL model for AMR in UAV-based 6G wireless network.
+<img width="1730" height="1323" alt="fig3" src="https://github.com/user-attachments/assets/c8f5ce62-a05a-42a0-820c-002b55497ab3" />
+
 
 # 📁 Included Scripts
 
