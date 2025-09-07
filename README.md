@@ -16,7 +16,7 @@ Satyendra Singh Yadav
 # 
 
 Design a lighted a DL model for AMR in UAV-based 6G wireless network.
-<img width="730" height="323" alt="fig3" src="https://github.com/user-attachments/assets/c8f5ce62-a05a-42a0-820c-002b55497ab3" />
+<img width="800" height="600" alt="fig3" src="https://github.com/user-attachments/assets/c8f5ce62-a05a-42a0-820c-002b55497ab3" />
 
 
 # 📁 Included Scripts
