@@ -17,11 +17,11 @@ Authors:
 
 Affiliation:
 
--Debbarni Sarkar, Samarth Verma, Rupa Kumari, and Satyendra Singh Yadav are with the Department of ECE, National Institute of Technology Meghalaya, India.
+- Debbarni Sarkar, Samarth Verma, Rupa Kumari, and Satyendra Singh Yadav are with the Department of ECE, National Institute of Technology Meghalaya, India.
 
--Yogita is with the Department of CSE, National Institute of Technology Kurukshetra, India
+- Yogita is with the Department of CSE, National Institute of Technology Kurukshetra, India
 
--Vipin Pal is with the Department of CSE, National Institute of Technology Delhi, India.
+- Vipin Pal is with the Department of CSE, National Institute of Technology Delhi, India.
 
 # 
 
