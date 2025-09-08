@@ -1,5 +1,7 @@
 # A-SLCNN-for-AMR-in-UAV-based-6G-Wireless-Network
-Manuscript ID: IEEE LATAM Submission ID: 9500 Authors:
+Manuscript ID: IEEE LATAM Submission ID: 9500 
+
+Authors:
 
 Debbarni Sarkar 
 
@@ -12,6 +14,14 @@ Yogita
 Vipin Pal
 
 Satyendra Singh Yadav
+
+Affiliation:
+
+Debbarni Sarkar, Samarth Verma, Rupa Kumari, and Satyendra Singh Yadav are with the Department of ECE, National Institute of Technology Meghalaya, India.
+
+Yogita is with the Department of CSE, National Institute of Technology Kurukshetra, India
+
+Vipin Pal is with the Department of CSE, National Institute of Technology Delhi, India.
 
 # 
 
