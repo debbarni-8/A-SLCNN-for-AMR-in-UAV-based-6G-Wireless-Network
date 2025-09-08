@@ -3,25 +3,25 @@ Manuscript ID: IEEE LATAM Submission ID: 9500
 
 Authors:
 
-Debbarni Sarkar 
+-Debbarni Sarkar 
 
-Samarth Verma 
+-Samarth Verma 
 
-Rupa Kumari 
+-Rupa Kumari 
 
-Yogita
+-Yogita
 
-Vipin Pal
+-Vipin Pal
 
-Satyendra Singh Yadav
+-Satyendra Singh Yadav
 
 Affiliation:
 
-Debbarni Sarkar, Samarth Verma, Rupa Kumari, and Satyendra Singh Yadav are with the Department of ECE, National Institute of Technology Meghalaya, India.
+-Debbarni Sarkar, Samarth Verma, Rupa Kumari, and Satyendra Singh Yadav are with the Department of ECE, National Institute of Technology Meghalaya, India.
 
-Yogita is with the Department of CSE, National Institute of Technology Kurukshetra, India
+-Yogita is with the Department of CSE, National Institute of Technology Kurukshetra, India
 
-Vipin Pal is with the Department of CSE, National Institute of Technology Delhi, India.
+-Vipin Pal is with the Department of CSE, National Institute of Technology Delhi, India.
 
 # 
 
