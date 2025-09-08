@@ -1,19 +1,21 @@
-# A-SLCNN-for-AMR-in-UAV-based-6G-Wireless-Network
-Manuscript ID: IEEE LATAM Submission ID: 9500 
+# A Super Light Convolutional Neural Network for Automatic Modulation Recognition in Unmanned Aerial Vehicles based 6G Wireless Network
+Paper Title: IEEE Latin America Transactions
+
+Submission ID: 9500 
 
 Authors:
 
-- Debbarni Sarkar 
+1. Debbarni Sarkar 
 
-- Samarth Verma 
+1. Samarth Verma 
 
-- Rupa Kumari 
+1. Rupa Kumari 
 
-- Yogita
+1. Yogita
 
-- Vipin Pal
+1. Vipin Pal
 
-- Satyendra Singh Yadav
+1. Satyendra Singh Yadav
 
 Affiliation:
 
