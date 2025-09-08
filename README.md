@@ -1,5 +1,5 @@
 # A Super Light Convolutional Neural Network for Automatic Modulation Recognition in Unmanned Aerial Vehicles based 6G Wireless Network
-Paper Title: IEEE Latin America Transactions
+Journal: IEEE Latin America Transactions
 
 Paper ID: 9500 
 
