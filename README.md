@@ -5,17 +5,17 @@ Submission ID: 9500
 
 Authors:
 
-1. Debbarni Sarkar 
+1. Debbarni Sarkar (p21ec004@nitm.ac.in)
 
-1. Samarth Verma 
+1. Samarth Verma (b20ec038@nitm.ac.in)
 
-1. Rupa Kumari 
+1. Rupa Kumari (b20ec040@nitm.ac.in)
 
-1. Yogita
+1. Yogita (yogita@nitkkr.ac.in)
 
-1. Vipin Pal
+1. Vipin Pal (vipinpal@nitdelhi.ac.in)
 
-1. Satyendra Singh Yadav
+1. Satyendra Singh Yadav (satyendra@nitm.ac.in)
 
 Affiliation:
 
